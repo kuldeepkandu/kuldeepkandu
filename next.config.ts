@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
   images: {
-    domains: ['localhost', 'res.cloudinary.com']
+    unoptimized: true, // required for static export — no Image Optimization API at runtime
+    remotePatterns: [
+      { protocol: 'http', hostname: 'localhost' },
+      { protocol: 'https', hostname: 'res.cloudinary.com' },
+    ],
   }
 };
 

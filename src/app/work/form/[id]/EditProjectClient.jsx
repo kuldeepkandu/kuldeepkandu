@@ -1,14 +1,20 @@
 "use client";
 
-import { useEffect } from "react";
-import ProjectForm from "../../../components/project/ProjectForm";
-import { createProject } from "../../../services/projects.api";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import ProjectForm from "../../../../components/project/ProjectForm";
+import {
+  updateProject,
+  getProjectById,
+} from "../../../../services/projects.api";
 import { useTransitionRouter } from "next-view-transitions";
 
-export default function CreateProjectPage() {
+export default function EditProjectClient() {
+  const { id } = useParams();
   const router = useTransitionRouter();
+  const [project, setProject] = useState(null);
 
-  // Client-side auth guard (replaces server middleware — not available in static export)
+  // Client-side auth guard
   useEffect(() => {
     const token = document.cookie
       .split("; ")
@@ -31,7 +37,6 @@ export default function CreateProjectPage() {
           pseudoElement: "::view-transition-old(root)",
         },
       );
-
       document.documentElement.animate(
         [{ transform: "translateY(100%)" }, { transform: "translateY(0)" }],
         {
@@ -46,21 +51,30 @@ export default function CreateProjectPage() {
     }
   }
 
-  const handleCreate = async (formData) => {
-    try {
-      const data = await createProject(formData);
+  useEffect(() => {
+    const fetchProject = async () => {
+      const data = await getProjectById(id);
+      setProject(data.projects[0]);
+    };
+    fetchProject();
+  }, [id]);
+
+  const handleUpdate = async (formData) => {
+    const data = await updateProject(id, formData);
     alert(data.message);
     if (!data.success) {
-      throw new Error(data.message || "Failed to create project");
+      throw new Error(data.message || "Failed to update project");
     }
-    router.push(`/work/`, {
-      onTransitionReady: slideInOut,
-    });
-    } catch (error) {
-      alert(error.message || "Failed to create project");
-      console.error("Create project error: ", error);
-    }
+    router.push(`/work/${id}`, { onTransitionReady: slideInOut });
   };
 
-  return <ProjectForm onSubmit={handleCreate} submitText="Create Project" />;
+  if (!project) return <p>Loading...</p>;
+
+  return (
+    <ProjectForm
+      initialData={project}
+      onSubmit={handleUpdate}
+      submitText="Update Project"
+    />
+  );
 }

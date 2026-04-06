@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import SkillsForm from "../../../components/skills/SkillsForm";
 import { createSkillCategory } from "../../../services/skillsCategory";
 import { useTransitionRouter } from "next-view-transitions";
@@ -7,6 +8,16 @@ import { useTransitionRouter } from "next-view-transitions";
 const skillForm = () => {
 
   const router = useTransitionRouter();
+
+  // Client-side auth guard (replaces server middleware — not available in static export)
+  useEffect(() => {
+    const token = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("token="))
+      ?.split("=")[1];
+    if (!token) router.push("/login");
+  }, []);
+
   function slideInOut() {
     try {
       document.documentElement.animate(

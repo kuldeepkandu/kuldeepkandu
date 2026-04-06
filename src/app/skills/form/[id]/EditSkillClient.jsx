@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
-import ProjectForm from "../../../components/project/ProjectForm";
-import { createProject } from "../../../services/projects.api";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import SkillsForm from "../../../../components/skills/SkillsForm";
+import { updateSkillCategory, getSkillCategoryById } from "../../../../services/skillsCategory";
 import { useTransitionRouter } from "next-view-transitions";
 
-export default function CreateProjectPage() {
+export default function EditSkillClient() {
+  const { id } = useParams();
+  const [skillCategory, setSkillCategory] = useState(null);
   const router = useTransitionRouter();
 
-  // Client-side auth guard (replaces server middleware — not available in static export)
+  // Client-side auth guard
   useEffect(() => {
     const token = document.cookie
       .split("; ")
@@ -31,7 +34,6 @@ export default function CreateProjectPage() {
           pseudoElement: "::view-transition-old(root)",
         },
       );
-
       document.documentElement.animate(
         [{ transform: "translateY(100%)" }, { transform: "translateY(0)" }],
         {
@@ -46,21 +48,30 @@ export default function CreateProjectPage() {
     }
   }
 
-  const handleCreate = async (formData) => {
-    try {
-      const data = await createProject(formData);
+  useEffect(() => {
+    const fetchSkillCategory = async () => {
+      const data = await getSkillCategoryById(id);
+      setSkillCategory(data);
+    };
+    fetchSkillCategory();
+  }, [id]);
+
+  const handleUpdate = async (formData) => {
+    const data = await updateSkillCategory(id, formData);
     alert(data.message);
     if (!data.success) {
-      throw new Error(data.message || "Failed to create project");
+      throw new Error(data.message || "Failed to update skill category");
     }
-    router.push(`/work/`, {
-      onTransitionReady: slideInOut,
-    });
-    } catch (error) {
-      alert(error.message || "Failed to create project");
-      console.error("Create project error: ", error);
-    }
+    router.push("/about", { onTransitionReady: slideInOut });
   };
 
-  return <ProjectForm onSubmit={handleCreate} submitText="Create Project" />;
+  if (!skillCategory) return <div>Loading...</div>;
+
+  return (
+    <SkillsForm
+      initialData={skillCategory}
+      onSubmit={handleUpdate}
+      submitText="Update Skill Category"
+    />
+  );
 }
