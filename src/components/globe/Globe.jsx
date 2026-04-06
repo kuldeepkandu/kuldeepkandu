@@ -1,0 +1,76 @@
+"use client"
+import { useRef, useEffect } from 'react';
+import styles from './globe.module.css';
+import gsap from 'gsap';
+import DrawSVGPlugin from 'gsap/DrawSVGPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// register the DrawSVG plugin (it's included with gsap in node_modules)
+// register DrawSVG and ScrollTrigger so we can trigger the draw on scroll
+gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
+
+export default function Globe() {
+    const svgRef = useRef(null);
+    const outlineRef = useRef(null);
+    const balckRef = useRef(null);
+    const grayRef = useRef(null);
+
+    useEffect(() => {
+        if (!outlineRef.current || !balckRef.current) return;
+
+        const ctx = gsap.context(() => {
+            // create a timeline that's controlled by ScrollTrigger
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: svgRef.current,
+                    start: 'top 80%',
+                    end: 'bottom 60%',
+                    scrub: 3,
+                    // markers: true,
+                    toggleActions: 'play none none reverse',
+                },
+                defaults: { ease: 'power2.out' },
+            });
+
+            // Draw the outer circle first
+            tl.fromTo(
+                outlineRef.current,
+                { drawSVG: '0% 0%', opacity: 0 },
+                { drawSVG: '0% 100%', opacity: 1, duration: 1 }
+            );
+
+            // Then draw internal lines slightly overlapping
+            tl.fromTo(
+                balckRef.current,
+                { drawSVG: '0% 0%', opacity: 0 },
+                { drawSVG: '0% 100%', opacity: 1, duration: 1.2 },
+                '-=0.3'
+            );
+        }, svgRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <div className="">
+            <svg 
+            ref={svgRef}
+            className={styles.svg}
+            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-label="globe">
+
+                <g clipPath="url(#a)">
+                    {/* outer circle outline */}
+                    <circle ref={outlineRef} className={styles.stOutline} cx="8" cy="8" r="7" />
+
+                    {/* internal globe lines */}
+                    <path ref={balckRef} className={styles.st0} fillRule="evenodd" clipRule="evenodd" d="M10.27 14.1a6.5 6.5 0 0 0 3.67-3.45q-1.24.21-2.7.34-.31 1.83-.97 3.1M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.48-1.52a7 7 0 0 1-.96 0H7.5a4 4 0 0 1-.84-1.32q-.38-.89-.63-2.08a40 40 0 0 0 3.92 0q-.25 1.2-.63 2.08a4 4 0 0 1-.84 1.31zm2.94-4.76q1.66-.15 2.95-.43a7 7 0 0 0 0-2.58q-1.3-.27-2.95-.43a18 18 0 0 1 0 3.44m-1.27-3.54a17 17 0 0 1 0 3.64 39 39 0 0 1-4.3 0 17 17 0 0 1 0-3.64 39 39 0 0 1 4.3 0m1.1-1.17q1.45.13 2.69.34a6.5 6.5 0 0 0-3.67-3.44q.65 1.26.98 3.1M8.48 1.5l.01.02q.41.37.84 1.31.38.89.63 2.08a40 40 0 0 0-3.92 0q.25-1.2.63-2.08a4 4 0 0 1 .85-1.32 7 7 0 0 1 .96 0m-2.75.4a6.5 6.5 0 0 0-3.67 3.44 29 29 0 0 1 2.7-.34q.31-1.83.97-3.1M4.58 6.28q-1.66.16-2.95.43a7 7 0 0 0 0 2.58q1.3.27 2.95.43a18 18 0 0 1 0-3.44m.17 4.71q-1.45-.12-2.69-.34a6.5 6.5 0 0 0 3.67 3.44q-.65-1.27-.98-3.1" />
+                </g>
+                <defs>
+                    <clipPath id="a">
+                        <path ref={grayRef} className={styles.st1} d="M0 0h16v16H0z" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+    )
+}

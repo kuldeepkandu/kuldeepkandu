@@ -1,0 +1,45 @@
+.st0 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    /* don't fill the path so DrawSVG reveals the stroke */
+    fill: none;
+    stroke: rgb(255, 255, 255); /* slightly darker for contrast */
+    /* use px widths and non-scaling stroke to keep crispness when scaled */
+    stroke-width: 1.25px;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    will-change: stroke-dashoffset, opacity;
+}
+
+.st1 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: none;
+    stroke: none;
+    stroke-width: 2;
+}
+
+.svg {
+    /* slightly larger render size to avoid browser subpixel blur */
+    width: 96px;
+    height: 96px;
+    display: block;
+    shape-rendering: geometricPrecision;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.stOutline {
+    fill: none;
+    stroke: #0f1724;
+    stroke-width: 1.9px;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* fallback for browsers that don't support non-scaling-stroke: allow slightly thicker strokes */
+@supports not (vector-effect: non-scaling-stroke) {
+  .st0 { stroke-width: 1.6px; }
+  .stOutline { stroke-width: 2.4px; }
+}

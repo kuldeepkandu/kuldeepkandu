@@ -1,0 +1,107 @@
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import Card from "../cards/Card";
+import { HiOutlineMap } from "react-icons/hi";
+import { BsBoundingBox, BsWindowSplit } from "react-icons/bs";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Skills = [
+  {
+    number: "01",
+    title: "Full Stack Development",
+    description:
+      "Building scalable and high-performance web applications using Next.js, React, Node.js, and TypeScript, with robust backend architectures, secure RESTful APIs, and clean code practices.",
+    icon: HiOutlineMap,
+  },
+  {
+    number: "02",
+    title: "UI/UX Design & Frontend",
+    description:
+      "Designing modern, responsive interfaces with Figma, Tailwind CSS, and Framer Motion. Creating intuitive experiences with clean design systems and pixel-perfect implementations.",
+    icon: BsWindowSplit,
+  },
+  {
+    number: "03",
+    title: "API & System Architecture",
+    description:
+      "Designing maintainable APIs with PostgreSQL, Prisma, and MongoDB. Focusing on performance optimization, security best practices, and reliable data flow.",
+    icon: BsBoundingBox,
+  },
+];
+
+const SkillCard = () => {
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
+
+  useGSAP(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile) return;
+
+    const track = trackRef.current;
+    const scrollWidth = track.scrollWidth;
+    const viewportWidth = window.innerWidth;
+    const offset = 120;
+
+    gsap.to(track, {
+      x: -(scrollWidth - viewportWidth + offset),
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        pin: true,
+        scrub: 1,
+        start: "top+=210 top",
+        end: () => `+=${scrollWidth - viewportWidth + offset}`,
+      },
+    });
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative bg-custom-gradient overflow-hidden py-16 md:py-32"
+    >
+      {/* Heading */}
+      <div className="w-full px-6 md:px-20 mb-10">
+        <p className="text-xl md:text-4xl max-w-5xl">
+          Transforming ideas into exceptional digital experiences through expertise and innovation
+        </p>
+      </div>
+
+      {/* Cards */}
+      <div
+        ref={trackRef}
+        className="
+          flex 
+          flex-col md:flex-row 
+          gap-8 md:gap-10 
+          px-6 md:px-20 
+          pb-10
+        "
+      >
+        {Skills.map((card, idx) => (
+          <div
+            key={idx}
+            className="
+              flex-shrink-0 
+              w-full md:w-[420px]
+            "
+          >
+            <Card
+              number={card.number}
+              title={card.title}
+              description={card.description}
+              icon={card.icon}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default SkillCard;
