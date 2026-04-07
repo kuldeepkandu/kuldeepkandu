@@ -3,19 +3,25 @@
 import { useEffect } from "react";
 import ProjectForm from "../../../components/project/ProjectForm";
 import { createProject } from "../../../services/projects.api";
+import { verifyAuth } from "../../../services/auth.api";
 import { useTransitionRouter } from "next-view-transitions";
 
 export default function CreateProjectPage() {
   const router = useTransitionRouter();
 
-  // Client-side auth guard (replaces server middleware — not available in static export)
+  // Client-side auth guard (via backend session check)
   useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("token="))
-      ?.split("=")[1];
-    if (!token) router.push("/login");
-  }, []);
+    const checkAuth = async () => {
+      try {
+        const response = await verifyAuth();
+        if (!response?.success) router.push("/login");
+      } catch {
+        router.push("/login");
+      }
+    };
+
+    checkAuth();
+  }, [router]);
 
   function slideInOut() {
     try {

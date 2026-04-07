@@ -1,24 +1,29 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { verifyAuth } from "../services/auth.api";
 
 const AuthContext = createContext({ isLoggedIn: false });
 
 export const useAuth = () => useContext(AuthContext);
 
 /**
- * Reads the `token` cookie on the client to determine auth state.
- * No server dependency — works with static export (output: 'export').
+ * Verifies auth session through backend API.
  */
 export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("token="))
-      ?.split("=")[1];
-    setIsLoggedIn(!!token);
+    const checkAuth = async () => {
+      try {
+        const response = await verifyAuth();
+        setIsLoggedIn(!!response?.success);
+      } catch {
+        setIsLoggedIn(false);
+      }
+    };
+
+    checkAuth();
   }, []);
 
   return (

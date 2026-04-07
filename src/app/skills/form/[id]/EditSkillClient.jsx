@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import SkillsForm from "../../../../components/skills/SkillsForm";
 import { updateSkillCategory, getSkillCategoryById } from "../../../../services/skillsCategory";
+import { verifyAuth } from "../../../../services/auth.api";
 import { useTransitionRouter } from "next-view-transitions";
 
 export default function EditSkillClient() {
@@ -13,12 +14,17 @@ export default function EditSkillClient() {
 
   // Client-side auth guard
   useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("token="))
-      ?.split("=")[1];
-    if (!token) router.push("/login");
-  }, []);
+    const checkAuth = async () => {
+      try {
+        const response = await verifyAuth();
+        if (!response?.success) router.push("/login");
+      } catch {
+        router.push("/login");
+      }
+    };
+
+    checkAuth();
+  }, [router]);
 
   function slideInOut() {
     try {

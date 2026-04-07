@@ -7,6 +7,7 @@ import {
   updateProject,
   getProjectById,
 } from "../../../../services/projects.api";
+import { verifyAuth } from "../../../../services/auth.api";
 import { useTransitionRouter } from "next-view-transitions";
 
 export default function EditProjectClient() {
@@ -16,12 +17,17 @@ export default function EditProjectClient() {
 
   // Client-side auth guard
   useEffect(() => {
-    const token = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("token="))
-      ?.split("=")[1];
-    if (!token) router.push("/login");
-  }, []);
+    const checkAuth = async () => {
+      try {
+        const response = await verifyAuth();
+        if (!response?.success) router.push("/login");
+      } catch {
+        router.push("/login");
+      }
+    };
+
+    checkAuth();
+  }, [router]);
 
   function slideInOut() {
     try {

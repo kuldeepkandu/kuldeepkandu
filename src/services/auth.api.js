@@ -8,4 +8,10 @@ export const login = async(formData) => {
     })
 }
 
+export const verifyAuth = async() => {
+    return fetchData("auth/me", {
+        method: "GET",
+    });
+}
+
 
