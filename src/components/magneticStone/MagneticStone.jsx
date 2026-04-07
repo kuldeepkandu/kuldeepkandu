@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import { withBasePath } from "@/lib/withBasePath";
 
 export default function MagneticStone({
   image = "/Assets/rock/stone.png",
@@ -111,7 +112,7 @@ export default function MagneticStone({
         className="absolute flex items-center justify-center w-[220px] h-[260px]"
       >
         <Image
-          src={image}
+          src={withBasePath(image)}
           alt="Stone"
           fill
           priority

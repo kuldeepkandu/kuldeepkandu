@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import CountUp from "../CountUp";
+import { withBasePath } from "@/lib/withBasePath";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,7 +76,7 @@ const AboutGlims = ({
           >
             <div className="mt-50 w-full h-[400px] flex items-center justify-center">
             <Image
-              src={image}
+              src={withBasePath(image)}
               alt="Portrait"
               // fill
               width={100}

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { withBasePath } from "@/lib/withBasePath";
 
 const AboutMe = ({
   image = "/Assets/profile/myImage.jpg",
@@ -54,7 +55,7 @@ const AboutMe = ({
           <div className="flex justify-center md:justify-end">
             <div className="stagger w-[220px] h-[320px] md:w-[320px] md:h-[440px] rounded-xl overflow-hidden">
               <Image
-                src={image}
+                src={withBasePath(image)}
                 alt="Portrait"
                 width={400}
                 height={600}

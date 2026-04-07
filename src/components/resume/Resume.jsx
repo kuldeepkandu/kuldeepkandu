@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import PDFViewer from "./PdfViewer";
+import { withBasePath } from "@/lib/withBasePath";
 
 const Resume = () => {
   const [open, setOpen] = useState(false);
-  const pdfUrl = "/Assets/pdf/Kuldeep(CV).pdf";
+  const pdfUrl = withBasePath("/Assets/pdf/Kuldeep(CV).pdf");
 
   return (
     <>

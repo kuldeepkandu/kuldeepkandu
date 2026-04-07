@@ -3,7 +3,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-
+import { withBasePath } from "@/lib/withBasePath";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -43,7 +43,7 @@ const YearsAbout = ({
                 </div>
                 <div className="stagger w-[200px] h-[400px] bg-black rounded-lg flex items-center justify-center overflow-hidden shadow-lg">
                     <Image
-                        src={image}
+                        src={withBasePath(image)}
                         alt="Portrait"
                         width={200}
                         height={200}

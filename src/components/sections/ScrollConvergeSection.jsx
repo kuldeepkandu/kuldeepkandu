@@ -4,6 +4,7 @@ import Image from 'next/image'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { withBasePath } from '@/lib/withBasePath';
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function ScrollConvergeSection({
@@ -96,7 +97,7 @@ export default function ScrollConvergeSection({
           {/* Image */}
           <div ref={imageRef} className="absolute z-10 left-1/2 top-1/2 w-[200px] h-[300px] bg-black rounded-lg">
             <Image
-              src={image}
+              src={withBasePath(image)}
               alt="Portrait"
               width={100}
               height={200}

@@ -13,7 +13,7 @@ import { usePathname } from "next/navigation";
 import { FiMessageCircle } from "react-icons/fi";
 import Image from "next/image";
 import Resume from "../resume/Resume";
-
+import { withBasePath } from "@/lib/withBasePath";
 
 const Menu = [
   { text: "Home", href: "/" },
@@ -28,6 +28,8 @@ const Navbar = ({
 }) => {
 
   const pathname = usePathname();
+  const logoSrc = withBasePath(logo);
+  const logoAltSrc = withBasePath(logo1);
 
   const router = useTransitionRouter();
 
@@ -89,7 +91,7 @@ const Navbar = ({
         >
           <div className="w-8 md:w-10 h-10 flex items-center justify-center md:pt-1 pt-3">
             <Image
-              src={logo}
+              src={logoSrc}
               alt="Kuldeep Logo"
               width={50}
               height={40}

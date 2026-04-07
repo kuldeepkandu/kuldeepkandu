@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { withBasePath } from "@/lib/withBasePath";
 
 const AboutLanding = ({ image = "/Assets/profile/myImage.jpeg" }) => {
   const containerRef = useRef(null);
@@ -63,7 +64,7 @@ const AboutLanding = ({ image = "/Assets/profile/myImage.jpeg" }) => {
             <div className="group relative w-[240px] h-[340px] md:w-[350px] md:h-[500px] rounded-xl overflow-hidden bg-black">
               {/* Image */}
               <Image
-                src={image}
+                src={withBasePath(image)}
                 alt="Portrait"
                 fill
                 priority
