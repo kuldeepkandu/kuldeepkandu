@@ -19,8 +19,6 @@ const Menu = [
   { text: "Home", href: "/" },
   { text: "About", href: "/about" },
   { text: "Work", href: "/work" },
-  { text: "Blog", href: "/blog" },
-  { text: "Services", href: "/services" },
   // { text: "Contact", href: "/contact" },
 ];
 
