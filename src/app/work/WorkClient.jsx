@@ -33,12 +33,12 @@ const WorkClient = ({ project }) => {
     <div className="min-h-screen bg-custom-gradient">
       <div
         ref={containerRef}
-        className="flex-col justify-start items-center py-20 md:px-20 px-6"
+        className="section-shell flex-col justify-start items-center py-16 md:py-20 lg:py-24"
       >
-        <p className="md:text-6xl text-3xl max-w-3xl font-medium leading-tight capitalize">
+        <p className="text-[clamp(2rem,5vw,4.25rem)] max-w-4xl font-medium leading-tight capitalize">
           Imagination Trumps Knowledge!{" "}
         </p>
-        <div className=" space-y-4 text-base md:text-xl font-light text-gray-700 max-w-2xl mt-4">
+        <div className="space-y-4 text-base md:text-lg lg:text-xl font-light text-gray-700 max-w-3xl mt-4">
           <p className="animate-item">
             Discover my latest projects where design, technology, and creativity
             come together to craft engaging digital experiences. Below is a

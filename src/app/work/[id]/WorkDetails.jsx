@@ -79,7 +79,7 @@ const WorkDetails = ({ project, otherProject }) => {
           <Loader />
         </div>
       )}
-      <div className="md:pl-20 pl-10 pr-5 md:pr-10">
+      <div className="section-shell">
         {project.map((project) => (
           <div className="" key={project.id} ref={containerRef}>
             {isLoggedIn && (
@@ -103,14 +103,14 @@ const WorkDetails = ({ project, otherProject }) => {
               </div>
             )}
 
-            <div className="animate-item flex flex-col md:flex-row justify-between items-start gap-4">
+            <div className="animate-item flex flex-col md:flex-row justify-between items-start gap-4 lg:gap-8">
               <div className="">
-                <h1 className="md:text-7xl text-2xl font-semibold">
+                <h1 className="text-[clamp(2rem,5vw,5rem)] font-semibold leading-tight">
                   {project.title}
                 </h1>
               </div>
-              <div className="md:w-80 md:text-end">
-                <h1 className="md:text-xl text-black/50 text-sm font-semibold md:mt-20 py-4 italic ">
+              <div className="md:w-72 lg:w-80 xl:w-96 md:text-end">
+                <h1 className="md:text-lg lg:text-xl text-black/50 text-sm font-semibold md:mt-12 lg:mt-20 py-4 italic ">
                   Showcasing creativity Through outstanding project
                 </h1>
               </div>
@@ -120,13 +120,13 @@ const WorkDetails = ({ project, otherProject }) => {
               <p>Scroll to Explore</p>
             </div>
 
-            <div className="animate-item md:mt-10 w-full md:h-150 flex justify-center items-center">
+            <div className="animate-item mt-6 md:mt-10 w-full min-h-[280px] md:min-h-[420px] lg:min-h-[520px] flex justify-center items-center">
               <Image
                 src={project.thumbnail}
                 alt="project"
                 width={800}
                 height={500}
-                className="object-contain rounded-lg hover:scale-105 transition-transform duration-300"
+                className="object-contain rounded-lg hover:scale-105 transition-transform duration-300 w-full h-auto max-h-[70vh]"
                 priority
               />
             </div>
@@ -134,29 +134,29 @@ const WorkDetails = ({ project, otherProject }) => {
               <Divider />
             </div>
 
-            <div className="w-full flex justify-center items-center md:px-10 md:py-10">
+            <div className="w-full flex justify-center items-center md:px-6 lg:px-10 md:py-10">
               <section className="animate-item flex justify-center items-center flex-col">
-                <p className="max-w-3xl md:text-xl text-zinc-700 leading-relaxed text-center ">
+                <p className="max-w-4xl text-base md:text-lg lg:text-xl text-zinc-700 leading-relaxed text-center ">
                   {project.description}
                 </p>
               </section>
             </div>
-            <div className="w-full md:min-h-screen md:px-10 py-12">
-              <div className="animate-item w-full max-w-5xl rounded-full bg-gradient-to-b from-teal-400 to-cyan-500 p-1">
+            <div className="w-full md:min-h-[70vh] lg:min-h-[40vh] md:px-6 lg:px-10 py-12">
+              <div className="animate-item w-full rounded-full bg-gradient-to-b from-teal-400 to-cyan-500 p-1">
                 <EmblaCarousel images={project.images} />
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-between items-center gap-3 mt-6 p-4">
+            <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mt-6 py-4">
               <div className="animate-item flex flex-col justify-start items-start gap-4">
-                <h1 className="md:text-5xl text-3xl font-semibold">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
                   Tech Stack
                 </h1>
-                <h1 className="md:text-xl text-gray-400">
+                <h1 className="text-base md:text-lg lg:text-xl text-gray-400 max-w-2xl">
                   Technologies and tools used to bring this project to life
                 </h1>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 w-full lg:w-auto">
                 {project.techs?.map((tech, i) => (
                   <p
                     key={i}
@@ -197,7 +197,7 @@ const WorkDetails = ({ project, otherProject }) => {
           borderColor="rgba(41, 38, 38, 1)"
         />
       </div>
-      <div className="w-full flex justify-center items-center py-10 px-4 animate-item flex md:hidden">
+      <div className="w-full flex justify-center items-center py-10 px-4 animate-item md:hidden">
         <ProjectCard items={otherProject} />
       </div>
 

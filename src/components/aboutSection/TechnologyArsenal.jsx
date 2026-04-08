@@ -37,11 +37,11 @@ const TechnologyArsenal = ({ tech, onDeleteSuccess }) => {
     },
   );
   return (
-    <section className="bg-custom-gradient py-28">
-      <div className="mx-auto max-w-7xl px-6 md:px-20">
+    <section className="bg-custom-gradient py-20 md:py-24 lg:py-28">
+      <div className="section-shell">
         {/* Header */}
-        <div className="text-center space-y-4 mb-20">
-          <div className="text-4xl md:text-6xl font-semibold">
+        <div className="text-center space-y-4 mb-14 md:mb-16 lg:mb-20">
+          <div className="text-[clamp(2rem,4.8vw,4rem)] font-semibold">
             <ScrollFloat
               animationDuration={1}
               ease="back.inOut(2)"
@@ -60,7 +60,7 @@ const TechnologyArsenal = ({ tech, onDeleteSuccess }) => {
         {/* Grid */}
         <div
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-x-20 gap-y-16"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 md:gap-x-10 xl:gap-x-14 gap-y-12 md:gap-y-14 lg:gap-y-16"
         >
           {(tech ?? []).map((group) => (
             <SkillCategory

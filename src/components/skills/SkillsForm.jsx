@@ -94,7 +94,7 @@ const SkillsForm = ({ initialData = {}, onSubmit, submitText = "Submit" }) => {
           <Loader />
         </div>
       )}
-      <div className="max-w-lg mx-auto p-4 space-y-4">
+      <div className="section-shell-tight max-w-4xl p-4 md:p-6 space-y-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">Skill Details</h2>
@@ -111,7 +111,7 @@ const SkillsForm = ({ initialData = {}, onSubmit, submitText = "Submit" }) => {
             </div>
           </div>
         </div>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-4 md:p-6 lg:p-8">
         <div>
           <input
             type="text"

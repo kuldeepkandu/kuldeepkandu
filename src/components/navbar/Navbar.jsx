@@ -76,7 +76,7 @@ const Navbar = ({
       {/* NAVBAR */}
       <nav
         ref={navRef}
-        className="w-full sticky top-0 z-50 backdrop-blur-sm text-slate-600 flex items-center justify-between px-6 md:px-20 h-10 md:py-8"
+        className="w-full sticky top-0 z-50 backdrop-blur-sm text-slate-600 flex items-center justify-between section-shell h-12 md:h-16 lg:h-18"
       >
         {/* Logo */}
         <Link
@@ -86,10 +86,10 @@ const Navbar = ({
               onTransitionReady: slideInOut,
             });
           }}
-          className="font-sarif text-lg md:text-xl font-bold uppercase"
+          className="font-serif text-lg md:text-xl lg:text-2xl font-bold uppercase"
           href={"/"}
         >
-          <div className="w-8 md:w-10 h-10 flex items-center justify-center md:pt-1 pt-3">
+          <div className="w-8 md:w-10 lg:w-11 h-10 flex items-center justify-center md:pt-1 pt-0">
             <Image
               src={logoSrc}
               alt="Kuldeep Logo"
@@ -103,9 +103,10 @@ const Navbar = ({
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-16 text-sm py-2 px-6 text-lg font-semibold backdrop-blur-sm bg-black/10 text-gray-600 border rounded-full mt-4">
+        <ul className="hidden md:flex gap-8 lg:gap-12 xl:gap-16 text-sm py-2 px-4 lg:px-6 text-base lg:text-lg font-semibold backdrop-blur-sm bg-black/10 text-gray-600 border rounded-full">
           {Menu.map(({ text, href }, idx) => {
-            const isActive = pathname === href;
+            const normalizedPathname = pathname.replace(/\/$/, '') || '/';
+            const isActive = normalizedPathname === href;
             return (
               <li key={idx}>
                 <Link
@@ -126,7 +127,7 @@ const Navbar = ({
           )}
         </ul>
 
-        <ul className="hidden md:flex text-sm py-2 px-6 text-black mt-4">
+        <ul className="hidden md:flex text-sm py-2 px-2 lg:px-4 text-black">
           <li>
             <button
               onClick={() => setIsContactModalOpen(true)}
@@ -230,17 +231,27 @@ const Navbar = ({
 
           {/* Menu */}
           <ul className="flex flex-col gap-2">
-            {Menu.map(({ text, href }, idx) => (
-              <li key={idx}>
-                <Link
-                  href={href}
-                  onClick={() => setOpen(false)}
-                  className="hoverTextSplit block py-1 text-lg font-semibold text-white hover:text-gray-300 transition-colors"
-                >
-                  {text}
-                </Link>
-              </li>
-            ))}
+            {Menu.map(({ text, href }, idx) => {
+              const normalizedPathname = pathname.replace(/\/$/, '') || '/';
+              const isActive = normalizedPathname === href;
+              return (
+                <li key={idx}>
+                  <Link
+  href={href}
+  onClick={() => setOpen(false)}
+  className={`hoverTextSplit block py-1 text-lg font-semibold transition-colors 
+    ${
+      isActive
+        ? "text-white relative after:block after:h-[2px] after:bg-white after:mt-1 after:rounded-full"
+        : "text-white/70 hover:text-white"
+    }`}
+>
+  {text}
+</Link>
+
+                </li>
+              );
+            })}
           </ul>
 
           <Divider />

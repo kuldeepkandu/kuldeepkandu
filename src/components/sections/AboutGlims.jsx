@@ -53,28 +53,28 @@ const AboutGlims = ({
 
   return (
     <div className="bg-custom-gradient">
-      <div className="w-full min-h-screen flex flex-col justify-center items-center">
+      <div className="w-full min-h-screen flex flex-col justify-center items-center py-10 md:py-14 lg:py-20">
 
         {/* Moving Text */}
         <div
           ref={containerRef}
           className="w-full whitespace-nowrap flex overflow-hidden"
         >
-          <h1 className="moving-text text-[10vw] uppercase font-semibold mr-20 inline-block">
+          <h1 className="moving-text text-[clamp(3rem,8vw,8rem)] uppercase font-semibold mr-12 md:mr-16 lg:mr-20 inline-block">
             Full-Stack Developer UI & UX Designer
           </h1>
-          <h1 className="moving-text text-[10vw] uppercase font-semibold inline-block">
+          <h1 className="moving-text text-[clamp(3rem,8vw,8rem)] uppercase font-semibold inline-block">
             Full-Stack Developer UI & UX Designer
           </h1>
         </div>
 
         {/* Center Image */}
-        <div className="relative w-full min-h-screen flex items-center justify-center mt-10">
+        <div className="relative section-shell flex items-center justify-center mt-10 md:mt-12 lg:mt-16 min-h-[70vh]">
           <div
             ref={imageRef}
-            className="z-10 w-[300px] min-h-screen md:w-[1100px] md:h-[500px] rounded-lg overflow-hidden shadow-lg relative bg-radial from-black-500 to-gray-600 rounded-full "
+            className="z-10 w-[280px] h-[420px] sm:w-[360px] sm:h-[480px] md:w-[720px] md:h-[420px] lg:w-[980px] lg:h-[520px] xl:w-[1120px] xl:h-[560px] 2xl:w-[1280px] 2xl:h-[620px] overflow-hidden shadow-lg relative bg-radial from-black-500 to-gray-600 rounded-[999px]"
           >
-            <div className="mt-50 w-full h-[400px] flex items-center justify-center">
+            <div className="w-full h-full flex items-center justify-center pt-20 md:pt-16 lg:pt-20">
             <Image
               src={withBasePath(image)}
               alt="Portrait"
@@ -88,40 +88,40 @@ const AboutGlims = ({
         </div>
 
         {/* About Text */}
-        <div className="flex flex-col md:flex-row md:mt-20 mt-10 md:px-20 px-10 gap-6 md:gap-12 md:mb-10 mb-15">
-          <div className="md:text-4xl text-xl flex-1">
+        <div className="section-shell flex flex-col md:flex-row md:mt-16 lg:mt-20 mt-10 gap-6 md:gap-10 lg:gap-12 mb-10">
+          <div className="text-xl md:text-3xl lg:text-4xl flex-1">
             <p>
               Driving measurable growth and engagement through thoughtful design and engineering.
             </p>
             <div className="hidden md:block">
-              <hr className="w-[90%] h-[0.5px] bg-gray-500 border-0 md:mt-20" />
+              <hr className="w-[90%] h-[0.5px] bg-gray-500 border-0 md:mt-16 lg:mt-20" />
             </div>
           </div>
 
-          <div className="md:text-xl text-lg font-light flex-1">
+          <div className="text-base md:text-lg lg:text-xl font-light flex-1">
             <p>
               Every product I build starts with understanding user goals and translating them into intuitive, high-performance experiences. From concept to launch, I focus on meaningful results—boosting user engagement, retention, and overall business impact.
             </p>
-            <hr className="w-full h-[0.5px] bg-gray-500 border-0 mt-6 md:mt-15" />
+            <hr className="w-full h-[0.5px] bg-gray-500 border-0 mt-6 md:mt-10 lg:mt-14" />
           </div>
         </div>
 
         {/* Stats */}
-        <div className="flex md:flex-row flex-col md:justify-between justify-start items-center w-full md:px-20 gap-8 md:gap-0 mt-10">
+        <div className="section-shell flex md:flex-row flex-col md:justify-between justify-start items-center w-full gap-8 md:gap-6 lg:gap-10 mt-10">
           <div className="text-left">
-            <p className="uppercase md:font-light font-semibold text-xl md:text-base">
+            <p className="uppercase md:font-light font-semibold text-lg md:text-base lg:text-lg">
               Year of Experience
             </p>
-            <p className="text-5xl md:text-8xl text-center font-bold mt-2 md:mt-4">
+            <p className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-center font-bold mt-2 md:mt-4">
               <CountUp from={0} to={2} separator="," direction="up" duration={1} />+
             </p>
           </div>
 
           <div className="text-left">
-            <p className="uppercase md:font-light font-semibold text-xl md:text-base">
+            <p className="uppercase md:font-light font-semibold text-lg md:text-base lg:text-lg">
               Projects Completed
             </p>
-            <p className="text-5xl md:text-8xl text-center font-bold mt-2 md:mt-4">
+            <p className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-center font-bold mt-2 md:mt-4">
               <CountUp from={0} to={10} separator="," direction="up" duration={1} />+
             </p>
           </div>

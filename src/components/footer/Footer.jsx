@@ -100,8 +100,7 @@ const Footer = () => {
         scrollTrigger: {
           trigger: staggerRef.current,
           start: "top 80%",
-          end: "top 50%",
-          scrub: true,
+          toggleActions: "play none none none",
           // markers: true,
         }
       }

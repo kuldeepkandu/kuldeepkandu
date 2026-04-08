@@ -65,23 +65,23 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center p-4 md:p-0">
-      <div className="relative w-full md:h-100 h-90 md:mt-15 mt-10 rounded-2xl overflow-hidden border border-gray-500 bg-gradient-to-r from-gray-500 to-gray-800 md:p-8 md:w-1/2">
+    <div className="section-shell-tight flex justify-center items-center p-4 md:p-0 py-8 md:py-12 lg:py-16">
+      <div className="relative w-full min-h-[560px] md:min-h-[620px] lg:min-h-[640px] mt-6 md:mt-10 rounded-2xl overflow-hidden border border-gray-500 bg-gradient-to-r from-gray-500 to-gray-800 md:p-8 max-w-4xl">
         <div
           className="absolute top-0 right-0 w-[55%] h-full bg-gradient-to-br from-gray-200 to-gray-800"
           style={{ clipPath: "polygon(5% 0, 100% 0, 100% 100%, 15% 100%)" }}
         />
         <div className="relative z-10 flex h-full">
-          <div className="hidden md:w-1/2 md:flex flex-col justify-center items-center text-center px-10">
-            <h2 className="text-white text-4xl font-extrabold uppercase leading-tight mb-4 drop-shadow-lg text-start">
+          <div className="hidden md:w-1/2 md:flex flex-col justify-center items-center text-center px-8 lg:px-10">
+            <h2 className="text-white text-3xl lg:text-4xl font-extrabold uppercase leading-tight mb-4 drop-shadow-lg text-start">
               Welcome Back!
             </h2>
-            <p className="text-gray-300 text-sm leading-relaxed max-w-[250px] text-start">
+            <p className="text-gray-300 text-sm lg:text-base leading-relaxed max-w-[280px] text-start">
               Please enter your credentials to access your account
             </p>
           </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center px-12">
-            <h1 className="text-white md:text-3xl text-2xl font-bold mb-8">Login</h1>
+          <div className="w-full md:w-1/2 flex flex-col justify-center px-6 sm:px-8 md:px-10 lg:px-12 py-10 md:py-0">
+            <h1 className="text-white md:text-3xl text-2xl lg:text-4xl font-bold mb-8">Login</h1>
             <form
               action=""
               className="flex flex-col gap-6"

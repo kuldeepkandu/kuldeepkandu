@@ -48,9 +48,9 @@ const Expertise = () => {
   }, { scope: containerRef });
 
   return (
-    <section className="bg-custom-gradient py-20">
-      <div className="mx-auto max-w-7xl px-6 md:px-20">
-        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-3 gap-16">
+    <section className="bg-custom-gradient py-16 md:py-20 lg:py-24">
+      <div className="section-shell">
+        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-12 lg:gap-14 xl:gap-16">
           {items.map((item) => (
             <div key={item.number} className="space-y-6">
               {/* Number */}
@@ -60,7 +60,7 @@ const Expertise = () => {
               <div className="h-px w-full bg-gray-300" />
 
               {/* Title */}
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-900">{item.title}</h3>
+              <h3 className="text-xl md:text-2xl lg:text-[1.7rem] font-semibold text-gray-900">{item.title}</h3>
 
               {/* Description */}
               <p className="text-gray-600 leading-relaxed">{item.description}</p>

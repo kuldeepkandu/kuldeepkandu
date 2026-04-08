@@ -42,7 +42,7 @@ const FlowingMenu: React.FC<FlowingMenuProps> = ({
 }) => {
   
   return (
-    <div className="w-full h-[150px] overflow-hidden" style={{ backgroundColor: bgColor }}>
+    <div className="w-full h-[120px] md:h-[140px] lg:h-[150px] xl:h-[165px] overflow-hidden" style={{ backgroundColor: bgColor }}>
       <nav className="flex flex-col h-full">
         {items.map((item, idx) => (
           <MenuItem
@@ -235,7 +235,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
         href={targetHref}
         onMouseEnter={shutterDown}
         onMouseLeave={shutterUp}
-        className="flex items-center justify-center h-full uppercase font-semibold text-[4vh]"
+        className="flex items-center justify-center h-full uppercase font-semibold text-[clamp(1.5rem,2.8vw,3rem)] px-4 text-center"
         style={{ color: textColor }}
       >
         {title}
@@ -261,11 +261,11 @@ const MenuItem: React.FC<MenuItemProps> = ({
               className="marquee-part flex items-center flex-shrink-0"
               style={{ color: marqueeTextColor }}
             >
-              <span className="uppercase text-[4vh] px-[1vw] whitespace-nowrap">
+              <span className="uppercase text-[clamp(1.5rem,2.8vw,3rem)] px-3 md:px-4 lg:px-5 whitespace-nowrap">
                 {title}
               </span>
               <div
-                className="w-[200px] h-[7vh] mx-[2vw] rounded-[50px] bg-cover bg-center"
+                className="w-[120px] md:w-[150px] lg:w-[180px] xl:w-[200px] h-[52px] md:h-[60px] lg:h-[68px] xl:h-[76px] mx-3 md:mx-4 lg:mx-6 rounded-[50px] bg-cover bg-center"
                 style={{ backgroundImage: `url(${thumbnail})` }}
               />
             </div>

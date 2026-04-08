@@ -55,6 +55,10 @@ html, body {
   width: 100%;
   box-sizing: border-box;
   background: #f2f2f2;
+  /* Consistent font rendering across Mac/Windows */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 :root {
   --radius: 0.625rem;
@@ -142,6 +146,23 @@ html, body {
   .bg-custom-gradient-reverse {
     @apply bg-gradient-to-r from-[black] to-[black];
   }
+
+  /* Safari/Mac fix: 100vh includes browser chrome on iOS Safari.
+     100dvh (dynamic viewport height) fixes this.
+     The two declarations provide a fallback for older Safari that
+     doesn't support dvh units. */
+  .landing-height {
+    height: calc(100vh - 3rem);   /* fallback */
+    height: calc(100dvh - 3rem);  /* Safari 15.4+, Chrome 108+, Firefox 101+ */
+  }
+
+  .section-shell {
+    @apply w-full max-w-[1600px] mx-auto px-6 md:px-10 lg:px-16 xl:px-20 2xl:px-28;
+  }
+
+  .section-shell-tight {
+    @apply w-full max-w-[1200px] mx-auto px-6 md:px-10 lg:px-14 xl:px-16;
+  }
 }
 
 /* Transition page Navigation */
@@ -207,6 +228,7 @@ html, body {
 .gradient-icon {
   display: inline-block;
   background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

@@ -44,7 +44,7 @@ const Landing = () => {
         <div className="relative">
             <div
                 ref={containerRef}
-                className="bg-custom-gradient overflow-hidden h-[calc(100vh-3rem)] relative"
+                className="bg-custom-gradient overflow-hidden landing-height relative"
             >
                 {/* <Particles
           particleColors={["#ffffff", "#ffffff"]}
@@ -65,9 +65,9 @@ const Landing = () => {
                     className="orb"
                 />
 
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-light w-full ">
-                    <p className="text-xl md:text-[5vw] text-center font-semibold font-normal font-sarif scale-y-120">Hi! i’m Kuldeep</p>
-                    <h1 className="md:text-[8vw] text-3xl text-center font-semibold md:leading-tight mt-2">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-light w-full px-4 md:px-8 lg:px-12">
+                    <p className="text-[clamp(1.25rem,3.8vw,4rem)] text-center font-semibold font-serif scale-y-[1.2]">Hi! i'm Kuldeep</p>
+                    <h1 className="text-[clamp(2rem,7vw,8.5rem)] text-center font-semibold leading-[1.05] mt-2">
                         <span className="from-left md:block text-black">Building Visions</span>
                         <span className="from-right md:block text-black "> Into Digital Reality</span>
                     </h1>

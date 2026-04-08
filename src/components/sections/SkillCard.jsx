@@ -63,11 +63,11 @@ const SkillCard = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-custom-gradient overflow-hidden py-16 md:py-32"
+      className="relative bg-custom-gradient overflow-hidden py-16 md:py-24 lg:py-28 xl:py-32"
     >
       {/* Heading */}
-      <div className="w-full px-6 md:px-20 mb-10">
-        <p className="text-xl md:text-4xl max-w-5xl">
+      <div className="section-shell mb-10 md:mb-12 lg:mb-16">
+        <p className="text-xl md:text-3xl lg:text-4xl xl:text-[2.8rem] max-w-5xl leading-tight">
           Transforming ideas into exceptional digital experiences through expertise and innovation
         </p>
       </div>
@@ -78,8 +78,8 @@ const SkillCard = () => {
         className="
           flex 
           flex-col md:flex-row 
-          gap-8 md:gap-10 
-          px-6 md:px-20 
+          gap-8 md:gap-10 lg:gap-12 
+          section-shell 
           pb-10
         "
       >
@@ -88,7 +88,7 @@ const SkillCard = () => {
             key={idx}
             className="
               flex-shrink-0 
-              w-full md:w-[420px]
+              w-full md:w-[360px] lg:w-[400px] xl:w-[420px] 2xl:w-[460px]
             "
           >
             <Card

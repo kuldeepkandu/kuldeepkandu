@@ -67,19 +67,19 @@ const Dev = () => {
       {/* MAIN */}
       <section
         className="relative min-h-screen bg-custom-gradient-reverse text-white
-                   px-6 md:px-12 pt-[140px] pb-12"
+                   section-shell pt-[120px] md:pt-[140px] lg:pt-[160px] pb-12 md:pb-16 lg:pb-20"
       >
         <div className="flex flex-col items-center justify-between h-full gap-y-16">
 
           {/* TEXT CONTENT */}
-          <div ref={staggerRef} className="flex flex-col items-center md:gap-y-16 gap-y-5 text-center">
-            <h1  className="stagger max-w-4xl text-lg md:text-[2.5vw] leading-snug font-medium">
+          <div ref={staggerRef} className="flex flex-col items-center gap-y-5 md:gap-y-10 lg:gap-y-14 text-center">
+            <h1  className="stagger max-w-5xl text-[clamp(1.125rem,2.4vw,2.5rem)] leading-snug font-medium">
               I'm Kuldeep — a FullStack Developer crafting fast, scalable, and
               immersive digital experiences that merge creativity with
               engineering precision.
             </h1>
 
-            <p className="stagger max-w-3xl text-sm md:text-[1.8vw] leading-relaxed opacity-90">
+            <p className="stagger max-w-4xl text-sm md:text-base lg:text-xl leading-relaxed opacity-90">
               I specialize in developing SaaS platforms, AI-driven products, and
               interactive 3D web experiences using technologies like Next.js,
               Node.js, and Three.js.

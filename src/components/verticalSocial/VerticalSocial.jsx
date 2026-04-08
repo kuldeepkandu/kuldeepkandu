@@ -29,25 +29,33 @@ const containerRef = useRef(null);
     }, {scope: containerRef})
 
     return (
-    <div ref={containerRef} className="absolute left-6 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-center">
-        
-        <span className="w-2 h-2 rounded-full bg-black"/>
-        <span className="w-[0.5px] h-50 bg-black opacity-80"/>
-        <span className="w-2 h-2 rounded-full bg-black"/>
+    <div
+  ref={containerRef}
+      className="absolute left-4 md:left-6 lg:left-8 xl:left-10 top-1/2 -translate-y-1/2 z-40 hidden sm:flex flex-col items-center"
+>
+  {/* Dots and line */}
+  <span className="w-2 h-2 rounded-full bg-black" />
+  {/* Height of line: smaller on mobile, consistent elsewhere */}
+  <span className="w-[0.5px] h-24 md:h-36 lg:h-44 xl:h-52 bg-black opacity-80" />
+  <span className="w-2 h-2 rounded-full bg-black" />
 
-        <div className="flex flex-col gap-5 mt-6">
-            {Icon.map((icon, index) => (
-                <a key={index}
-                title={icon.text}
-          href={icon.url}
-          target="_blank"
-          className="text-black hover:scale-110 transition-transform"
-        >
-          <icon.icon size={20} />
-        </a>
-            ))}
-        </div>
-    </div>
+  {/* Icon list */}
+  <div className="flex flex-col gap-4 lg:gap-5 mt-6">
+    {Icon.map((icon, index) => (
+      <a
+        key={index}
+        title={icon.text}
+        href={icon.url}
+        target="_blank"
+        className="text-black hover:scale-110 transition-transform"
+      >
+        {/* Smaller on mobile, consistent larger size elsewhere */}
+        <icon.icon className="w-4 h-4 md:w-5 md:h-5 lg:w-[1.15rem] lg:h-[1.15rem]" />
+      </a>
+    ))}
+  </div>
+</div>
+
     )
 }
 export default VerticalSocial;

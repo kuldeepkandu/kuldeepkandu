@@ -27,20 +27,20 @@ const AboutLanding = ({ image = "/Assets/profile/myImage.jpeg" }) => {
 
   return (
     <section className="min-h-screen flex items-center bg-custom-gradient">
-      <div className="mx-auto max-w-7xl w-full px-6 md:px-20 py-10">
+      <div className="section-shell py-10 md:py-14 lg:py-16">
         <div
           ref={containerRef}
-          className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 xl:gap-20 items-center"
         >
           {/* LEFT: Text */}
-          <div className="space-y-10">
+          <div className="space-y-8 lg:space-y-10">
             {/* Heading */}
-            <p className=" animate-item text-3xl md:text-6xl font-medium leading-tight capitalize">
+            <p className=" animate-item text-[clamp(2rem,5vw,4.25rem)] font-medium leading-tight capitalize">
               Turning Vision Into Reality With Code And Design.
             </p>
 
             {/* Description */}
-            <div className=" space-y-4 text-base md:text-xl font-light text-gray-700 max-w-xl">
+            <div className=" space-y-4 text-base md:text-lg lg:text-xl font-light text-gray-700 max-w-2xl">
               <p className="animate-item">
                 A Full-Stack Developer currently working as a Backend Developer,
                 focused on building scalable web applications.
@@ -61,7 +61,7 @@ const AboutLanding = ({ image = "/Assets/profile/myImage.jpeg" }) => {
 
           {/* RIGHT: Image */}
           <div className="animate-item flex justify-center md:justify-end">
-            <div className="group relative w-[240px] h-[340px] md:w-[350px] md:h-[500px] rounded-xl overflow-hidden bg-black">
+            <div className="group relative w-[240px] h-[340px] md:w-[320px] md:h-[460px] lg:w-[370px] lg:h-[520px] xl:w-[410px] xl:h-[580px] rounded-xl overflow-hidden bg-black">
               {/* Image */}
               <Image
                 src={withBasePath(image)}

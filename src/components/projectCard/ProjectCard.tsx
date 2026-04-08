@@ -45,7 +45,7 @@ const ProjectCard = ({ items }: { items: ProjectCardItem[] }) => {
   };
 
   return (
-    <div className="w-full p-4 grid grid-cols-1 gap-6">
+    <div className="w-full max-w-6xl p-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
       {items.map((item) => {
         const targetHref = item.id ? `/work/${item.id}` : "/work";
 
@@ -62,11 +62,11 @@ const ProjectCard = ({ items }: { items: ProjectCardItem[] }) => {
             className="relative group overflow-hidden rounded-xl shadow-lg transition-all duration-500 transform hover:scale-105"
           >
             <div className="mb-4 px-1">
-              <h1 className="text-black font-base text-4xl sm:text-2xl lg:text-4xl z-10">
+              <h1 className="text-black font-base text-2xl sm:text-3xl lg:text-4xl z-10 leading-tight">
                 {item.title}
               </h1>
             </div>
-            <div className="relative w-full h-60 sm:h-72 lg:h-64">
+            <div className="relative w-full h-60 sm:h-72 lg:h-64 xl:h-72">
               <Image
                 src={item.thumbnail || "/placeholder.jpg"}
                 alt={item.title || "Project"}
