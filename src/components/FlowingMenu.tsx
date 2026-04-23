@@ -1,9 +1,8 @@
-"use client"
-import React, { useRef, useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import Link from 'next/link';
+"use client";
+import React, { useRef, useEffect, useState } from "react";
+import { gsap } from "gsap";
+import Link from "next/link";
 import { useTransitionRouter } from "next-view-transitions";
-
 
 interface MenuItemData {
   id: number;
@@ -34,15 +33,17 @@ interface MenuItemProps extends MenuItemData {
 const FlowingMenu: React.FC<FlowingMenuProps> = ({
   items = [],
   speed = 15,
-  textColor = '#fff',
-  bgColor = '#060010',
-  marqueeBgColor = '#fff',
-  marqueeTextColor = '#060010',
-  borderColor = '#fff'
+  textColor = "#fff",
+  bgColor = "#060010",
+  marqueeBgColor = "#fff",
+  marqueeTextColor = "#060010",
+  borderColor = "#fff",
 }) => {
-  
   return (
-    <div className="w-full h-[120px] md:h-[140px] lg:h-[150px] xl:h-[165px] overflow-hidden" style={{ backgroundColor: bgColor }}>
+    <div
+      className="w-full h-[120px] md:h-[140px] lg:h-[150px] xl:h-[165px] overflow-hidden"
+      style={{ backgroundColor: bgColor }}
+    >
       <nav className="flex flex-col h-full">
         {items.map((item, idx) => (
           <MenuItem
@@ -71,17 +72,17 @@ const MenuItem: React.FC<MenuItemProps> = ({
   marqueeBgColor,
   marqueeTextColor,
   borderColor,
-  isFirst
+  isFirst,
 }) => {
   const marqueeRef = useRef<HTMLDivElement>(null);
   const marqueeInnerRef = useRef<HTMLDivElement>(null);
   const hoverTl = useRef<gsap.core.Timeline | null>(null);
   const marqueeTween = useRef<gsap.core.Tween | null>(null);
   const [repetitions, setRepetitions] = useState(4);
-    const router = useTransitionRouter();
-  const targetHref =  `/work/${id}`;
+  const router = useTransitionRouter();
+  const targetHref = `/work/${id}`;
 
-     function slideInOut() {
+  function slideInOut() {
     try {
       document.documentElement.animate(
         [
@@ -93,20 +94,17 @@ const MenuItem: React.FC<MenuItemProps> = ({
           easing: "cubic-bezier(0.76, 0, 0.24, 1)",
           fill: "forwards",
           pseudoElement: "::view-transition-old(root)",
-        }
+        },
       );
 
       document.documentElement.animate(
-        [
-          { transform: "translateY(100%)" },
-          { transform: "translateY(0)" },
-        ],
+        [{ transform: "translateY(100%)" }, { transform: "translateY(0)" }],
         {
           duration: 1500,
           easing: "cubic-bezier(0.76, 0, 0.24, 1)",
           fill: "forwards",
           pseudoElement: "::view-transition-new(root)",
-        }
+        },
       );
     } catch (err) {
       // fallback: a simple, safe CSS class toggle could be used instead
@@ -122,8 +120,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
       paused: true,
       defaults: {
         duration: 0.45,
-        ease: 'power4.out'
-      }
+        ease: "power4.out",
+      },
     });
 
     return () => {
@@ -138,13 +136,20 @@ const MenuItem: React.FC<MenuItemProps> = ({
     const updateRepetitions = () => {
       if (!marqueeInnerRef.current) return;
 
-      const part = marqueeInnerRef.current.querySelector('.marquee-part') as HTMLElement;
+      const part = marqueeInnerRef.current.querySelector(
+        ".marquee-part",
+      ) as HTMLElement;
       if (!part) return;
 
       const partWidth = part.getBoundingClientRect().width;
       const viewportWidth = window.innerWidth;
 
-      if (!Number.isFinite(partWidth) || partWidth <= 0 || !Number.isFinite(viewportWidth) || viewportWidth <= 0) {
+      if (
+        !Number.isFinite(partWidth) ||
+        partWidth <= 0 ||
+        !Number.isFinite(viewportWidth) ||
+        viewportWidth <= 0
+      ) {
         return;
       }
 
@@ -154,17 +159,19 @@ const MenuItem: React.FC<MenuItemProps> = ({
     };
 
     updateRepetitions();
-    window.addEventListener('resize', updateRepetitions);
+    window.addEventListener("resize", updateRepetitions);
 
     return () => {
-      window.removeEventListener('resize', updateRepetitions);
+      window.removeEventListener("resize", updateRepetitions);
     };
   }, []);
 
   /* ---------------- INFINITE MARQUEE ---------------- */
   useEffect(() => {
     if (!marqueeInnerRef.current) return;
-    const part = marqueeInnerRef.current.querySelector('.marquee-part') as HTMLElement;
+    const part = marqueeInnerRef.current.querySelector(
+      ".marquee-part",
+    ) as HTMLElement;
     if (!part) return;
 
     const partWidth = part.getBoundingClientRect().width;
@@ -175,8 +182,8 @@ const MenuItem: React.FC<MenuItemProps> = ({
     marqueeTween.current = gsap.to(marqueeInnerRef.current, {
       x: -partWidth,
       duration: speed,
-      ease: 'none',
-      repeat: -1
+      ease: "none",
+      repeat: -1,
     });
   }, [repetitions, speed]);
 
@@ -186,15 +193,10 @@ const MenuItem: React.FC<MenuItemProps> = ({
       ?.clear()
       .fromTo(
         marqueeRef.current,
-        { y: '-100%' },
-        { y: '0%', overwrite: 'auto' }
+        { y: "-100%" },
+        { y: "0%", overwrite: "auto" },
       )
-      .fromTo(
-        marqueeInnerRef.current,
-        { y: '100%' },
-        { y: '0%' },
-        0
-      )
+      .fromTo(marqueeInnerRef.current, { y: "100%" }, { y: "0%" }, 0)
       .play();
   };
 
@@ -202,19 +204,19 @@ const MenuItem: React.FC<MenuItemProps> = ({
     hoverTl.current
       ?.clear()
       .to(marqueeRef.current, {
-        y: '-100%',
+        y: "-100%",
         duration: 0.55,
-        ease: 'power4.in',
-        overwrite: 'auto'
+        ease: "power4.in",
+        overwrite: "auto",
       })
       .to(
         marqueeInnerRef.current,
         {
-          y: '100%',
+          y: "100%",
           duration: 0.55,
-          ease: 'power4.in'
+          ease: "power4.in",
         },
-        0
+        0,
       )
       .play();
   };
@@ -222,7 +224,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
   return (
     <div
       className="flex-1 relative overflow-hidden text-center"
-      style={{ borderTop: isFirst ? 'none' : `1px solid ${borderColor}` }}
+      style={{ borderTop: isFirst ? "none" : `1px solid ${borderColor}` }}
     >
       <Link
         // href={link}
@@ -235,25 +237,26 @@ const MenuItem: React.FC<MenuItemProps> = ({
         href={targetHref}
         onMouseEnter={shutterDown}
         onMouseLeave={shutterUp}
-        className="flex items-center justify-center h-full uppercase font-semibold text-[clamp(1.5rem,2.8vw,3rem)] px-4 text-center"
+        className="flex items-center justify-center h-full uppercase font-semibold text-[clamp(1.5rem,2.8vw,3rem)] px-4 text-center "
         style={{ color: textColor }}
       >
         {title}
       </Link>
 
+      {/*  This moving in background */}
       <div
         ref={marqueeRef}
         className="absolute inset-0 overflow-hidden pointer-events-none"
         style={{
           backgroundColor: marqueeBgColor,
-          transform: 'translateY(-100%)',
-          willChange: 'transform'
+          transform: "translateY(-100%)",
+          willChange: "transform",
         }}
       >
         <div
           ref={marqueeInnerRef}
           className="h-full w-fit flex items-center"
-          style={{ willChange: 'transform' }}
+          style={{ willChange: "transform" }}
         >
           {Array.from({ length: repetitions }).map((_, idx) => (
             <div

@@ -42,7 +42,7 @@ const SkillCategory = ({ id, category, skills, onDeleteSuccess }) => {
         </div>
       )}
       <div className="flex justify-between items-center">
-        <h3 className="text-xl font-semibold">{category}</h3>
+        <h3 className="md:text-2xl text-xl font-semibold">{category}</h3>
         {isLoggedIn && (
         <div className="w-full text-end animate-item">
           <button
@@ -71,7 +71,7 @@ const SkillCategory = ({ id, category, skills, onDeleteSuccess }) => {
         {skills.map((skill) => (
           <span
             key={skill}
-            className="px-4 py-2 rounded-full bg-white hover:bg-black hover:text-white transition duration-300 ease-in-out text-gray-800 text-sm font-medium"
+            className="px-4 py-2 rounded-full bg-white hover:bg-black hover:text-white transition duration-300 ease-in-out text-gray-800 text-sm md:text-base font-medium"
           >
             {skill}
           </span>

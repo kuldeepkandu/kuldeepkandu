@@ -81,6 +81,7 @@ const SkillCard = () => {
           gap-8 md:gap-10 lg:gap-12 
           section-shell 
           pb-10
+          h-full
         "
       >
         {Skills.map((card, idx) => (
@@ -88,7 +89,7 @@ const SkillCard = () => {
             key={idx}
             className="
               flex-shrink-0 
-              w-full md:w-[360px] lg:w-[400px] xl:w-[420px] 2xl:w-[460px]
+              w-full md:w-[360px] lg:w-[400px] xl:w-[420px] 2xl:w-[460px] h-full
             "
           >
             <Card

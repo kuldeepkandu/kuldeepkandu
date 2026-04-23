@@ -37,7 +37,7 @@ const WorkClient = ({ project }) => {
         className="section-shell flex-col justify-start items-center py-16 md:py-20 lg:py-24"
       >
         <p className="text-[clamp(2rem,5vw,4.25rem)] max-w-4xl font-medium leading-tight capitalize">
-          Imagination Trumps Knowledge!{" "}
+          My Works{" "}
         </p>
         <div className="space-y-4 text-base md:text-lg lg:text-xl font-light text-gray-700 max-w-3xl mt-4">
           <p className="animate-item">
