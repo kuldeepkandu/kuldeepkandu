@@ -81,78 +81,83 @@ const WorkDetails = ({ project, otherProject }) => {
       )}
       <div className="section-shell">
         {project.map((project) => (
-          <div className="" key={project.id} ref={containerRef}>
+          <div className="py-2 md:py-4" key={project.id} ref={containerRef}>
             {isLoggedIn && (
-              <div className="w-full text-end animate-item">
+              <div className="w-full flex justify-end gap-2 animate-item mb-3 md:mb-4">
                 <button
                   type="button"
                   aria-label="Edit project"
                   onClick={() => handleEdit(project.id)}
-                  className="text-sm md:text-lg cursor-pointer hover:text-white hover:bg-black rounded-full p-2 transition duration-300"
+                  className="h-10 w-10 md:h-11 md:w-11 inline-flex items-center justify-center rounded-full border border-black/15 bg-white text-black hover:bg-black hover:text-white transition duration-300 cursor-pointer"
                 >
-                  <MdModeEdit className="" />
+                  <MdModeEdit className="text-lg" />
                 </button>
                 <button
                   type="button"
                   aria-label="Delete project"
                   onClick={() => handleDelete(project.id)}
-                  className="text-sm md:text-lg cursor-pointer hover:text-white hover:bg-black rounded-full p-2 transition duration-300"
+                  className="h-10 w-10 md:h-11 md:w-11 inline-flex items-center justify-center rounded-full border border-black/15 bg-white text-black hover:bg-black hover:text-white transition duration-300 cursor-pointer"
                 >
-                  <MdDelete className="" />
+                  <MdDelete className="text-lg" />
                 </button>
               </div>
             )}
 
-            <div className="animate-item flex flex-col md:flex-row justify-between items-start gap-4 lg:gap-8">
-              <div className="">
-                <h1 className="text-[clamp(2rem,5vw,5rem)] font-semibold leading-tight">
+            <div className="animate-item flex flex-col md:flex-row justify-between items-start gap-4 lg:gap-10 border-b border-black/10 pb-5 md:pb-8">
+              <div>
+                <h1 className="text-[clamp(2rem,5vw,5rem)] font-semibold leading-[1.05] tracking-tight">
                   {project.title}
                 </h1>
               </div>
               <div className="md:w-72 lg:w-80 xl:w-96 md:text-end">
-                <h1 className="md:text-lg lg:text-xl text-black/50 text-sm font-semibold md:mt-12 lg:mt-20 py-4 italic ">
+                <h1 className="md:text-lg lg:text-xl text-black/55 text-sm font-medium md:mt-12 lg:mt-16 py-2 italic">
                   Showcasing creativity Through outstanding project
                 </h1>
               </div>
             </div>
-            <div className="animate-item text-start text-gray-500 italic py-4 flex items-center gap-2">
-              <FaArrowDownLong className="animate-bounce" />
+
+            <div className="animate-item text-start text-gray-600 italic py-4 flex items-center gap-2">
+              <FaArrowDownLong className="animate-bounce text-black/70" />
               <p>Scroll to Explore</p>
             </div>
 
-            <div className="animate-item mt-6 md:mt-10 w-full min-h-[280px] md:min-h-[420px] lg:min-h-[520px] flex justify-center items-center">
-              <Image
-                src={project.thumbnail}
-                alt="project"
-                width={800}
-                height={500}
-                className="object-contain rounded-lg hover:scale-105 transition-transform duration-300 w-full h-auto max-h-[70vh]"
-                priority
-              />
+            <div className="animate-item mt-6 md:mt-10 w-full min-h-[100px] md:min-h-[420px] lg:min-h-[520px] flex justify-center items-center rounded-2xl border border-black/10 bg-zinc-50 p-2 md:p-3 shadow-sm">
+              <div className="w-full h-full rounded-xl overflow-hidden">
+                <Image
+                  src={project.thumbnail}
+                  alt="project"
+                  width={800}
+                  height={500}
+                  className="object-contain md:object-cover md:hover:scale-[1.02] transition-transform duration-500 w-full h-auto max-h-[72vh]"
+                  priority
+                />
+              </div>
             </div>
+
             <div className="md:mt-10 py-10">
               <Divider />
             </div>
 
-            <div className="w-full flex justify-center items-center md:px-6 lg:px-10 md:py-10">
-              <section className="animate-item flex justify-center items-center flex-col">
-                <p className="max-w-4xl text-base md:text-lg lg:text-xl text-zinc-700 leading-relaxed text-center ">
+            <div className="w-full flex justify-center items-center md:px-6 lg:px-10 md:py-5">
+              <section className="animate-item flex justify-center items-center flex-col rounded-2xl px-5 py-6 md:px-8 md:py-8">
+                <p className="max-w-4xl text-base md:text-lg lg:text-xl text-zinc-700 leading-relaxed text-center">
                   {project.description}
                 </p>
               </section>
             </div>
+
             <div className="w-full md:min-h-[70vh] lg:min-h-[40vh] md:px-6 lg:px-10 py-12">
-              <div className="animate-item w-full rounded-full bg-gradient-to-b from-teal-400 to-cyan-500 p-1">
+              <div className="animate-item w-full rounded-2xl border border-black/10 bg-zinc-50 p-2 md:p-3 shadow-sm">
                 <EmblaCarousel images={project.images} />
               </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mt-6 py-4">
+            <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-6 mt-6 py-4 border-t border-black/10 pt-8">
               <div className="animate-item flex flex-col justify-start items-start gap-4">
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
                   Tech Stack
                 </h1>
-                <h1 className="text-base md:text-lg lg:text-xl text-gray-400 max-w-2xl">
+                <h1 className="text-base md:text-lg lg:text-xl text-gray-500 max-w-2xl">
                   Technologies and tools used to bring this project to life
                 </h1>
               </div>
@@ -160,26 +165,25 @@ const WorkDetails = ({ project, otherProject }) => {
                 {project.techs?.map((tech, i) => (
                   <p
                     key={i}
-                    className="animate-item p-2 text-sm md:text-base text-center
-                 bg-zinc-800 text-white 
-                 rounded-full 
-                 shadow-md 
-                 hover:bg-zinc-700 
-                 transition duration-300"
+                    className="animate-item px-4 py-2.5 text-sm md:text-base text-center rounded-full border border-black/15 bg-white text-zinc-800 shadow-sm hover:bg-black hover:text-white transition duration-300"
                   >
                     {tech}
                   </p>
                 ))}
               </div>
             </div>
-            <VideoPlayer
-              embedUrl={project.video_url}
-              title={project.title}
-              thumbnail={project.thumbnail}
-            />
+
+            <div className="pt-4 md:pt-6">
+              <VideoPlayer
+                embedUrl={project.video_url}
+                title={project.title}
+                thumbnail={project.thumbnail}
+              />
+            </div>
           </div>
         ))}
-        <div className="">
+
+        <div>
           <CurvedLoop
             marqueeText="Explore More ✦  Creative Work  ✦ Other Projects ✦"
             className={"animate-item"}
@@ -197,7 +201,7 @@ const WorkDetails = ({ project, otherProject }) => {
           borderColor="rgba(41, 38, 38, 1)"
         />
       </div>
-      <div className="w-full flex justify-center items-center py-10 px-4 animate-item md:hidden">
+      <div className="w-full flex justify-center items-center py-10 animate-item md:hidden">
         <ProjectCard items={otherProject} />
       </div>
 

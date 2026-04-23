@@ -7,6 +7,7 @@ import { useRef } from "react";
 import Footer from "../../components/footer/Footer";
 import { getProjects } from "../../services/projects.api";
 import { title } from "node:process";
+import ProjectCard from "../../components/projectCard/ProjectCard";
 
 gsap.registerPlugin(useGSAP);
 
@@ -46,7 +47,7 @@ const WorkClient = ({ project }) => {
           </p>
         </div>
       </div>
-      <div className="h-full" style={{ position: "relative" }}>
+      <div className=" h-full mt-4 hidden md:flex justify-center items-center py-10 animate-item" style={{ position: "relative" }}>
         <FlowingMenu
           bgColor="#f2f2f2"
           textColor="black"
@@ -56,6 +57,10 @@ const WorkClient = ({ project }) => {
           items={projects}
           borderColor="rgba(41, 38, 38, 1)"
         />
+      </div>
+
+      <div className="w-full flex justify-center items-center py-10 animate-item md:hidden">
+        <ProjectCard items={projects} />
       </div>
 
       <Footer />

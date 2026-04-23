@@ -52,21 +52,19 @@ const Login = () => {
       const response = await login(form);
       console.log("Login response: ", response);
       alert(response.message);
-      if (!response.success) {
-        throw new Error(response.message || "Failed to create project");
-      }
       router.push(`/`, {
       onTransitionReady: slideInOut,
     });
 
     } catch (error) {
       console.error("Login error: ", error);
+      alert(error.message || "Login failed");
     }
   };
 
   return (
     <div className="section-shell-tight flex justify-center items-center p-4 md:p-0 py-8 md:py-12 lg:py-16">
-      <div className="relative w-full min-h-[560px] md:min-h-[620px] lg:min-h-[640px] mt-6 md:mt-10 rounded-2xl overflow-hidden border border-gray-500 bg-gradient-to-r from-gray-500 to-gray-800 md:p-8 max-w-4xl">
+      <div className="relative w-full min-h-[100px] md:min-h-[300px] lg:min-h-[400px] mt-6 md:mt-10 rounded-2xl overflow-hidden border border-gray-500 bg-gradient-to-r from-gray-500 to-gray-800 md:p-8 max-w-4xl">
         <div
           className="absolute top-0 right-0 w-[55%] h-full bg-gradient-to-br from-gray-200 to-gray-800"
           style={{ clipPath: "polygon(5% 0, 100% 0, 100% 100%, 15% 100%)" }}

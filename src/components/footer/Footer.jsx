@@ -221,7 +221,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="mt-4">
-              <Link href="mailto:Maddeshiyakuldeep@gmail.com" className="font-bold hidden sm:flex scale-y-120 tracking-wider hover:animate-bounce hover:scale-120 hover:bg-gray-500 rounded-full px-2 hover:text-white transition-all duration-300">Maddeshiyakuldeep@gmail.com</Link>
+              <Link href="mailto:Maddeshiyakuldeep@gmail.com" className="md:font-bold text-sm underline flex scale-y-120 tracking-wider animate-bounce md:animate-none hover:animate-bounce hover:scale-120 hover:bg-gray-500 rounded-full px-2 hover:text-white transition-all duration-300">maddeshiyakuldeep@gmail.com</Link>
             </div>
           </div>
           <div className="mt-10">
